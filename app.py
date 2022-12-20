@@ -22,11 +22,14 @@ ax.axis('off')
 ax.text(-0.1, 0.05, 'Presupuesto Inversión y Devengado (Mill. S/)', transform=ax.transAxes, fontsize=10, verticalalignment='top', bbox=dict(boxstyle='round', facecolor='orange', alpha=0.5))
 
 # Add text pointing to the region
-ax.text(-80, -9.5, 'ANCASH', fontsize=10, color='black')
-ax.text(-74, -9.5, 'HUANUCO', fontsize=10, color='black')
-ax.text(-79, -12, 'LIMA', fontsize=10, color='black')
-ax.text(-72, -12, 'CUSCO', fontsize=10, color='black')
-ax.text(-69, -15, 'PUNO', fontsize=10, color='black')
+ax.text(-80.3, -9.5, 'ANCASH', fontsize=14, color='black', fontweight='bold')
+ax.text(-80.8, -9.8, '255,65', fontsize=14, color='red', fontweight='bold')
+ax.text(-79.5, -9.8, '143,51', fontsize=14, color='blue', fontweight='bold')
+
+ax.text(-74, -9.5, 'HUANUCO', fontsize=14, color='black', fontweight='bold')
+ax.text(-79, -12, 'LIMA', fontsize=14, color='black', fontweight='bold')
+ax.text(-72, -12, 'CUSCO', fontsize=14, color='black', fontweight='bold')
+ax.text(-69, -15, 'PUNO', fontsize=14, color='black', fontweight='bold')
 
 # add arrows pointing to the region
 # ax.annotate('', xy=(-79.5, -9.5), xytext=(-79.5, -12), arrowprops=dict(facecolor='black', shrink=0.05))
