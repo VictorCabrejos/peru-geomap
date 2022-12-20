@@ -4,7 +4,7 @@ gdal==3.5.0
 geopandas==0.9.0
 jupyter-client==7.4.8
 jupyter-core==4.12.0
-matplotlib=3.2.2
+matplotlib==3.2.2
 matplotlib-base==3.2.2
 matplotlib-inline==0.1.6
 numpy==1.21.6
