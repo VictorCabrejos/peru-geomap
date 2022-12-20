@@ -1,55 +1,38 @@
-from flask import Flask, render_template
+
 import geopandas as gpd
-
-# app = Flask(__name__)
-
-
-
-# # Load your geopandas map
-# url_geojson = "peru_departamental_simple.geojson"
-# region_geojson = gpd.read_file(url_geojson)
-
-# fig, ax = region_geojson.plot(figsize=(15,15))
-# plt.ylabel('Latitude')
-# plt.xlabel('Longitude')
-# plt.show()
-
-# fig.savefig('map.png')
-
-
-# # Convert the map to an HTML element
-# html = ax.to_html()
-
-# @app.route('/')
-# def index():
-#     return html
-
-
-# if __name__ == '__main__':
-#     app.run()
-
-#**********************************
-
-
-# app = Flask(__name__)
-
-# @app.route('/')
-# def map():
-#     # load the map data
-#     map_data = gpd.read_file('peru_departamental_simple.geojson')
-
-#     # render the template and pass in the map data
-#     return render_template('map.html', map_data=map_data)
-
-# if __name__ == '__main__':
-#     app.run()
-
 import streamlit as st
-import geopandas as gpd
+
 
 url_geojson = "peru_departamental_simple.geojson"
 region_geojson = gpd.read_file(url_geojson)
-ax = region_geojson.plot(figsize=(15,15))
+# ax = region_geojson.plot(figsize=(15,15))
 
-st.title("Peru Map")
+
+ax = region_geojson.plot(figsize=(20,20),edgecolor=u'white', color='grey', alpha=0.3, linewidth=3)
+region_geojson[region_geojson['NOMBDEP'] == 'ANCASH'].plot(ax=ax, color='orange', edgecolor=u'white', label='Presupuesto')
+region_geojson[region_geojson['NOMBDEP'] == 'HUANUCO'].plot(ax=ax, color='orange', edgecolor=u'white')
+region_geojson[region_geojson['NOMBDEP'] == 'LIMA'].plot(ax=ax, color='orange', edgecolor=u'white')
+region_geojson[region_geojson['NOMBDEP'] == 'CUSCO'].plot(ax=ax, color='orange', edgecolor=u'white')
+region_geojson[region_geojson['NOMBDEP'] == 'PUNO'].plot(ax=ax, color='orange', edgecolor=u'white')
+
+# remove the axis
+ax.axis('off')
+
+# add custom text box
+ax.text(-0.1, 0.05, 'Presupuesto Inversión y Devengado (Mill. S/)', transform=ax.transAxes, fontsize=10, verticalalignment='top', bbox=dict(boxstyle='round', facecolor='orange', alpha=0.5))
+
+# Add text pointing to the region
+ax.text(-80, -9.5, 'ANCASH', fontsize=10, color='black')
+ax.text(-74, -9.5, 'HUANUCO', fontsize=10, color='black')
+ax.text(-79, -12, 'LIMA', fontsize=10, color='black')
+ax.text(-72, -12, 'CUSCO', fontsize=10, color='black')
+ax.text(-69, -15, 'PUNO', fontsize=10, color='black')
+
+# add arrows pointing to the region
+# ax.annotate('', xy=(-79.5, -9.5), xytext=(-79.5, -12), arrowprops=dict(facecolor='black', shrink=0.05))
+# ax.annotate('', xy=(-69.5, -9.5), xytext=(-69.5, -12), arrowprops=dict(facecolor='black', shrink=0.05))
+# ax.annotate('', xy=(-79.5, -12), xytext=(-79.5, -15), arrowprops=dict(facecolor='black', shrink=0.05))
+# ax.annotate('', xy=(-69.5, -12), xytext=(-69.5, -15), arrowprops=dict(facecolor='black', shrink=0.05))
+
+st.title("SECTOR 36: TRANSPORTES Y COMUNICACIONES EJECUCIÓN INVERSIÓN 2022")
 st.pyplot(ax.get_figure())
