@@ -1,7 +1,6 @@
 numpy
 fiona
 flask
-gdal
 geopandas
 jupyter-client
 jupyter-core
